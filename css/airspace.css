@@ -121,7 +121,9 @@ font header .navbar-default .navbar-nav li a:hover {
   opacity: 0.7;
 }
 #slider .block {
-  color: #E3E3E4;
+  /*color: #E3E3E4;*/
+color: #36975D
+	
 }
 #slider .block h1 {
   font-family: 'Roboto', sans-serif;
