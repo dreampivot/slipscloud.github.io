@@ -48,6 +48,23 @@ $(document).ready(function(){
 
 });
 
+// alias Smooch in your config
+require.config({
+    "paths": {
+        "Smooch": "https://cdn.smooch.io/smooch.min"
+    }
+});
 
+require(['require', 'Smooch'], function(require){
+    var Smooch = require('Smooch');
+	// ...
+});
+
+// or
+
+define(function(require) {
+	var Smooch = require('Smooch');
+	// ...
+});
 
 
