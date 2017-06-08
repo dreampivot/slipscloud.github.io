@@ -10,7 +10,7 @@ permalink: /contact/
     <div class="row">
       <div class="col-md-12">
         <div class="block">
-          <h1>Drop Us A Note</h1>
+          <h1>联系我们</h1>
           <p>Don’t just take our word for it. Check out some of our latest work.</p>
         </div>
       </div>
@@ -25,13 +25,13 @@ permalink: /contact/
         <div class="block">
           <form>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" class="form-control" placeholder="姓名">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Email Address">
+              <input type="text" class="form-control" placeholder="电子邮箱地址">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
+              <input type="text" class="form-control" placeholder="主题">
             </div>
           </form>
         </div>
@@ -40,9 +40,9 @@ permalink: /contact/
         <div class="block">
           <form>
             <div class="form-group-2">
-              <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
+              <textarea class="form-control" rows="3" placeholder="内容"></textarea>
             </div>
-            <button class="btn btn-default" type="submit">Send Message</button>
+            <button class="btn btn-default" type="submit">发送</button>
           </form>
         </div>
       </div>
@@ -50,16 +50,16 @@ permalink: /contact/
     <div id="contact-box" class="row">
       <div class="col-md-6 col-sm-12">
         <div class="block">
-          <h2>Stop By For A visit</h2>
+          <h2>来看看</h2>
           <ul class="address-block">
             <li>
-              <i class="fa fa-map-marker"></i>North Main Street,Brooklyn Australia
+              <i class="fa fa-map-marker"></i>北京市海淀区西小口66号中关村东升科技园B-2一层D101A-247室
             </li>
             <li>
-              <i class="fa fa-envelope-o"></i>Email: contact@mail.com
+              <i class="fa fa-envelope-o"></i>Email: sales@slipscloud.com
             </li>
             <li>
-              <i class="fa fa-phone"></i>Phone:+88 01672 506 744
+              <i class="fa fa-phone"></i>Phone:+86 13641055943
             </li>
           </ul>
 
@@ -90,7 +90,7 @@ permalink: /contact/
       </div>
       <div class="col-md-6 col-sm-12">
         <div class="block">
-          <h2>We Also Count In Google Map</h2>
+          <h2>地址</h2>
             <div class="google-map">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.472979439986!2d-73.97769068489596!3d40.7516207793276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590247c56379%3A0x15e13bea38b43e18!2sChrysler+Building!5e0!3m2!1sen!2sus!4v1477406538220" width="555" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
@@ -99,6 +99,64 @@ permalink: /contact/
     </div>
   </div>
 </section>
+
+ <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.centerAndZoom(new BMap.Point(116.369853,40.049937),16);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay(){
+      var markers = [
+        {content:"我的备注",title:"北京智简云科技有限公司",imageOffset: {width:0,height:3},position:{lat:40.051925,lng:116.363448}}
+      ];
+      for(var index = 0; index < markers.length; index++ ){
+        var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+        var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+          imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+        })});
+        var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+        var opts = {
+          width: 200,
+          title: markers[index].title,
+          enableMessage: false
+        };
+        var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+        marker.setLabel(label);
+        addClickHandler(marker,infoWindow);
+        map.addOverlay(marker);
+      };
+    }
+    //向地图添加控件
+    function addMapControl(){
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    }
+    var map;
+      initMap();
+  </script>
 <!-- Call to action Start -->
 <section id="call-to-action">
   <div class="container">
