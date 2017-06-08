@@ -24,7 +24,18 @@
     {% include footer.html %}
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
     <script>
-Smooch.init({ appToken: 'ehzju4qknjydl2kzmilr8x2nr' });
+
+      Smooch.init({
+    appToken: 'ehzju4qknjydl2kzmilr8x2nr',
+    customText: {
+        headerText: '有什么可以帮您?',
+        inputPlaceholder: '写下您的问题...',
+        sendButtonText: '发送',
+    }
+});
+      
+      
+      
 </script>
 
     </body>
