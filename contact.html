@@ -80,16 +80,31 @@ permalink: /contact/
       <div class="col-md-6 col-sm-12">
         <div class="block">
           <h2>地址</h2>
+          <!--
             <div class="google-map">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.472979439986!2d-73.97769068489596!3d40.7516207793276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590247c56379%3A0x15e13bea38b43e18!2sChrysler+Building!5e0!3m2!1sen!2sus!4v1477406538220" width="555" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="百度地图">
- <script type="text/javascript">
+-->
+          <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+    <title>百度地图API自定义地图</title>
+    <!--引用百度地图API-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密匙"></script>
+  </head>
+  
+  <body>
+    <!--百度地图容器-->
+    <div style="width:700px;height:550px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+    <p style="color:red;font-weight:600">地图生成工具基于百度地图JS api v2.0版本开发，使用请申请密匙。
+      <a href="http://developer.baidu.com/map/index.php?title=jspopular/guide/introduction" style="color:#2f83c7" target="_blank">了解如何申请密匙</a>
+      <a href="http://lbsyun.baidu.com/apiconsole/key?application=key" style="color:#2f83c7" target="_blank">申请密匙</a>
+    </p>
+  </body>
+  <script type="text/javascript">
     //创建和初始化地图函数：
     function initMap(){
       createMap();//创建地图
@@ -99,7 +114,7 @@ permalink: /contact/
     }
     function createMap(){ 
       map = new BMap.Map("map"); 
-      map.centerAndZoom(new BMap.Point(116.369853,40.049937),16);
+      map.centerAndZoom(new BMap.Point(116.363813,40.05105),19);
     }
     function setMapEvent(){
       map.enableScrollWheelZoom();
@@ -114,7 +129,7 @@ permalink: /contact/
     }
     function addMapOverlay(){
       var markers = [
-        {content:"我的备注",title:"北京智简云科技有限公司",imageOffset: {width:0,height:3},position:{lat:40.051925,lng:116.363448}}
+        {content:"北京智简云科技有限公司",title:"北京智简云科技有限公司",imageOffset: {width:0,height:3},position:{lat:40.05173,lng:116.363463}}
       ];
       for(var index = 0; index < markers.length; index++ ){
         var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
@@ -146,6 +161,14 @@ permalink: /contact/
     var map;
       initMap();
   </script>
+</html>
+          
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Call to action Start -->
 <section id="call-to-action">
