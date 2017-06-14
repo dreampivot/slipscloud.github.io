@@ -187,6 +187,33 @@ li a:hover:not(.active) {
     background-color: #555;
     color: white;
 }
+hor ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+hor li {
+    float: left;
+}
+
+hor li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+hor li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
 </style>
 </head>
 <body>
@@ -198,6 +225,12 @@ li a:hover:not(.active) {
   <li><a href="#about">About</a></li>
 </ul>
 
+<hor ul>
+  <hor li><a href="#home">hHome</a></li>
+  <hor li><a href="#news">hNews</a></li>
+  <hor li><a href="#contact">hContact</a></li>
+  <hor li style="float:right"><a class=".active" href="#about">login</a></li>
+</ul>
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
   <h2>Fixed Full-height Side Nav</h2>
   <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
