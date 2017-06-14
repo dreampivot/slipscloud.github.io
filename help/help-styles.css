@@ -208,9 +208,9 @@ li ol, li ul {
 
 #container {
 	width: 960px;
-	margin: 20px auto;
-	padding: 10px;
-	box-shadow: 0 5px 5px 5px #CCCCCC;
+	margin: 5px auto;
+	padding: 5px;
+	box-shadow: 0 3px 3px 3px #CCCCCC;
 	background-color: #fff;
 }
 
