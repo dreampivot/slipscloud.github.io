@@ -330,6 +330,9 @@ article .article-info a {
     float: left;
     width: 19%;
     margin-top: 10px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
 }
 
 .sidebar h4 {
