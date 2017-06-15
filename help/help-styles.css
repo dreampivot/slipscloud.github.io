@@ -246,7 +246,7 @@ header h2 {
 
 nav {
     height: 100px;
-    width:100;
+    width:100%;
     background-color: #ffffff;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
