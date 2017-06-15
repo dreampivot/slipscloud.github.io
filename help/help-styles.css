@@ -245,21 +245,16 @@ header h2 {
 }
 
 nav {
-	height: 70px;
-	background-color: #ffffff;
-
-  
+    height: 100px;
+    background-color: #ffffff;
     position: fixed; /* Set the navbar to fixed position */
-    top: 10; /* Position the navbar at the top of the page */
-
+    top: 0; /* Position the navbar at the top of the page */
 }
-
 nav ul {
 	height: 70px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
- 
 }
 
 nav ul li {
@@ -297,8 +292,7 @@ nav ul li a:hover {
 	text-decoration: none;
 }
 
-img.header-image { padding-top: 10px;
-			margin-bottom: -3px; }
+img.header-image { padding-top: 2px; margin-bottom: 3px; }
 
 #body {
 	background: none;
@@ -309,7 +303,7 @@ img.header-image { padding-top: 10px;
 
 #content {
     float: right;
-    width: 71%;
+    width: 73%;
 }
 
 article {
@@ -334,7 +328,7 @@ article .article-info a {
 
 .sidebar {
     float: right;
-    width: 19%;
+    width: 25%;
     margin-top: 10px;
     position: fixed;
     height: 100%;
