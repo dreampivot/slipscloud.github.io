@@ -299,7 +299,7 @@ nav ul {
 }
 
 nav ul li {
-	float: left;
+	float: none;
 	display: block;
 	padding: 0;
 }
