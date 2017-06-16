@@ -408,10 +408,10 @@ article .article-info a {
 .sidebar li ul li {
 	display: block;
 	border-top: none;
-	padding: 7px;
+	padding: 0px;
 	margin: 0;
 	line-height: 1.5em;
-	font-size: 13.5px;
+	font-size: 13px;
 }
 
 .sidebar li ul li.text { 
