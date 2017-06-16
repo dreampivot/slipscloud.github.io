@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Pontano+Sans);
 .dropbtn {
-    background-color: #eee;
+    background-color: #f6f7f9;
     color: black;
     padding: 2px;
     font-size: 12px;
@@ -165,7 +165,6 @@ form input, form select, form textarea {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 }
-
 
 
 form input.formbutton {
@@ -433,8 +432,6 @@ article .article-info a {
    color: #799AC0;
    font-weight: bold;
 }
-
-
 
 
 .clear {
