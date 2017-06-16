@@ -334,7 +334,7 @@ nav ul li a:hover {
 	text-decoration: none;
 }
 
-img.header-image { padding-top: 2px; margin-bottom: 5px; }
+img.header-image { padding-top: 0px; margin-bottom: 0px; }
 
 #body {
 	background: none;
