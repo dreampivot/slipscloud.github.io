@@ -286,7 +286,7 @@ header h2 {
 }
 
 nav {
-    height: 50px;
+    height: 70px;
     width:100%;
     background-color: #ffffff;
     position: fixed; /* Set the navbar to fixed position */
