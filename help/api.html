@@ -279,6 +279,7 @@
 </tbody>
 </table>
 </blockquote>
+ <!--
 </div></div><div data-title="分页" class="keyline-top section contain clearfix " data-reactid="55"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="56"><h2 id="分页">分页</h2>
 <p>所有的 Slipscloud 资源都可以被 ---API 方法支持，例如分页 <code>charges</code> 和 <code>refunds</code>。这些 -- API 方法拥有相同的数据结构。Ping++ 是基于 <code>cursor</code> 的分页机制，使用参数 <code>starting_after</code> 来决定列表从何处开始，使用参数 <code>ending_before</code> 来决定列表从何处结束。</p>
 <table>
@@ -548,6 +549,7 @@ lte
   },
   <span class="hljs-string">"description"</span>: null
 }</pre>
+-->
 </div></div><div data-title="Charges 支付" class="keyline-top section contain clearfix " data-reactid="64"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="65"><h2 id="charges-支付">Charges 支付</h2>
 <p>你可以创建一个 <code>charge</code> 对象向用户收款。 charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 <code>charge</code> 对象，也可以随时查询一个或者多个 <code>charge</code> 对象的状态。每个 <code>charge</code> 对象都拥有一个标识 <code>id</code>，该 <code>id</code> 在 Ping++ 系统内唯一。</p>
 <table>
