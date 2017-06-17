@@ -4864,14 +4864,15 @@ https://api.pingxx.com/v1/customs/{CUSTOMS_ID}</pre>
     "transaction_no": null,
     "extra":{}
 }</pre>
+<!--
 </div></div><div data-title="Events 事件" class="keyline-top section contain clearfix " data-reactid="157"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="158"><h2 id="events-事件">Events 事件</h2>
-<p>为了便于客户系统或者第三方系统处理客户的交易信息，Ping++ 系统支持 Webhooks 功能，可以按照客户要求把特定的事件结果推送到指定的地址以便于客户做后续处理。目前支持的事件包括周期性交易汇总信息、支付结果、红包结果、企业转账结果和退款结果。
+<p>为了便于客户系统或者第三方系统处理客户的交易信息，Slipscloud 系统支持 Webhooks 功能，可以按照客户要求把特定的事件结果推送到指定的地址以便于客户做后续处理。目前支持的事件包括周期性交易汇总信息、支付结果、红包结果、企业转账结果和退款结果。
 以下是关于接收 Webhooks 通知的说明：</p>
 <ul>
-<li>Webhooks 是 Ping++ 和你服务器间的交互，相比页面跳转同步通知可以在页面上显示出来，这种交互方式是不可见的。</li>
+<li>Webhooks 是 Slipscloud 和你服务器间的交互，相比页面跳转同步通知可以在页面上显示出来，这种交互方式是不可见的。</li>
 <li>Webhooks 通知是以 <code>POST</code> 形式发送的 <code>JSON</code> ，放在请求的 <code>body</code> 里，内容是 <code>Event</code> 对象。</li>
 <li>你需要监听并接收 Webhooks 通知，接收到 Webhooks 后需要返回服务器状态码 2xx 表示接收成功，否则请返回状态码 500。</li>
-<li>若返回的服务器状态码不是 2xx，Ping++ 服务器会在 25 小时内向你的服务器不断重发通知，最多 10 次。Webhooks 首次是即时推送，重试通知时间间隔为 5s、10s、2min、5min、10min、30min、1h、2h、6h、15h，直到你正确回复状态 2xx 或者超过最大重发次数，Ping++ 将不再发送。</li>
+<li>若返回的服务器状态码不是 2xx， 服务器会在 25 小时内向你的服务器不断重发通知，最多 10 次。Webhooks 首次是即时推送，重试通知时间间隔为 5s、10s、2min、5min、10min、30min、1h、2h、6h、15h，直到你正确回复状态 2xx 或者超过最大重发次数，Ping++ 将不再发送。</li>
 </ul>
 <p>其中 <code>Event</code> 对象属性定义如下。</p>
 <table>
@@ -5501,6 +5502,7 @@ https://api.pingxx.com/v1/customs/{CUSTOMS_ID}</pre>
   "request": "iar_rDmfnTyb5ab1z61SOO9qPSKS",
   "pending_webhooks": 0
 }</pre>
+-->
 </div></div><div data-title="查询 Event 对象" class="keyline-top section contain clearfix " data-reactid="163"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="164"><h3 id="查询-event-对象">查询 Event 对象</h3>
 <p>通过 <code>event</code> 对象的 <code>id</code> 查询一个已创建的 <code>event</code> 对象。</p>
 <table>
