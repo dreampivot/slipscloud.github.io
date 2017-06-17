@@ -15,7 +15,7 @@
 <p>SlipsCloud 采用 先进设计。所有接口请求地址都是可预期的以及面向资源的。使用规范的 HTTP 响应代码来表示请求结果的正确或错误信息。使用 HTTP 内置的特性，如 HTTP Authentication 和 HTTP 请求方法让接口易于理解。所有的 API 请求都会以规范友好的 JSON 对象格式返回（包括错误信息）。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="45"><h4 id="官方-sdk">官方 SDK</h4>
 <blockquote>
-<p>Ping++ 提供多语言多平台的 <a href="https://www.pingxx.com/docs/downloads">官方客户端和服务端 SDK</a>。</p>
+<p>SlipsCloud 提供多语言多平台的 <a href="https://www.slipscloud.com/docs/downloads">官方客户端和服务端</a>。</p>
 </blockquote>
 <h4 id="定义">定义</h4>
 <div class='endpoint dark fill-blue round '>
@@ -23,17 +23,17 @@
       <div class='pad0 code small endpoint-url'>https://api.pingxx.com</div>
     </div>
 </div></div><div data-title="认证" class="keyline-top section contain clearfix " data-reactid="46"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="47"><h2 id="认证">认证</h2>
-<p>在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在 Ping++ 系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在管理平台的「企业设置」->「开发设置」内进行<a href="https://help.pingxx.com/article/123152">操作</a>。</p>
-<p>Ping++ API 使用 HTTP Basic Auth 进行认证。 将 API Key 作为 basic auth 的用户名。不需要填写密码。</p>
+<p>在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在 SlipsCloud 系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在管理平台的「企业设置」->「开发设置」内进行<a href="https://help.pingxx.com/article/123152">操作</a>。</p>
+<p>SlipsCloud API 使用 ---- 进行认证。 。</p>
 <p>API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。 所有的 API 请求必须通过 HTTPS 发送，使用 HTTP 会被 Ping++ 服务器拒绝。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="48"><h4 id="请求示例">请求示例</h4>
-<pre class='hljs'>curl https://api.pingxx.com/v1/charges \
+<pre class='hljs'>curl https://api.slipscloud.com/v1/charges \
 -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
 <blockquote>
 <p>请将示例中的 <code>sk_test_ibbTe5jLGCi5rzfH4OqPW9KC</code> 替换成你自己的 API Key。</p>
 </blockquote>
 </div></div><div data-title="错误" class="keyline-top section contain clearfix " data-reactid="49"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="50"><h2 id="错误">错误</h2>
-<p>Ping++ API 使用 HTTP 状态码 (status code) 来表明一个 API 请求的成功或失败状态。返回 <code>HTTP 2XX</code> 表明 API 请求成功。返回 <code>HTTP 4XX</code> 表明在请求 API 时提供了错误信息，例如参数缺失、参数错误、支付渠道错误等。返回 <code>HTTP 5XX</code> 表明 API 请求时，Ping++ 服务器发生了错误。</p>
+<p>SlipsCloud API 使用 HTTP 状态码 (status code) 来表明一个 API 请求的成功或失败状态。返回 <code>HTTP 2XX</code> 表明 API 请求成功。返回 <code>HTTP 4XX</code> 表明在请求 API 时提供了错误信息，例如参数缺失、参数错误、支付渠道错误等。返回 <code>HTTP 5XX</code> 表明 API 请求时， 服务器发生了错误。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="51"><h4 id="http-返回状态码">HTTP 返回状态码</h4>
 <blockquote>
 <table>
@@ -62,8 +62,8 @@
 </tr>
 <tr>
 <td>403 - Forbidden</td>
-<td>调用接口超过 Ping++ 套餐的并发限制，请
-<a href="https://dashboard.pingxx.com/pricing">升级套餐</a>
+<td>调用接口超过套餐的并发限制，请
+<a href="https://www.slipscloud.com">升级套餐</a>
 或限流。</td>
 </tr>
 <tr>
@@ -72,7 +72,7 @@
 </tr>
 <tr>
 <td>500, 502, 503, 504 - Server Errors</td>
-<td>Ping++ 服务器出错。</td>
+<td>服务器出错。</td>
 </tr>
 </tbody>
 </table>
