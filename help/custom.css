@@ -218,11 +218,11 @@ figure {
 }
 
 .entry-meta {
-	text-align: center;
+	text-align: left;
 	color: #DDDDDD;
-	font-size: 12px;
+	font-size: 10px;
 	letter-spacing: 1px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .entry-content {
