@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=11' />
+        <title>API 文档 | 智简云</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <link href='apibase.css' rel='stylesheet' />
+        <link href='apistyle.css' rel='stylesheet' />
+        <link href='railscasts.css' rel='stylesheet' />
+    </head>
+    <body>
+        <!--START--><div id='app'><div class="container unlimiter" data-reactroot="" data-reactid="1" data-react-checksum="418540799"><div class="fixed-top fixed-right space-left20" data-reactid="2"><div class="fill-dark col6 pin-right" data-reactid="3"></div></div><div class="space-top5 scroll-styled overflow-auto pad1 width20 sidebar fixed-left fill-light light" data-reactid="4"><div class="pad0x small" data-reactid="5"><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="6">简介</div><a href="#api-文档简介" class="nav-item block " data-reactid="7">API 文档简介</a><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="8">基础</div><a href="#认证" class="nav-item block " data-reactid="9">认证</a><a href="#错误" class="nav-item block " data-reactid="10">错误</a><a href="#分页" class="nav-item block " data-reactid="11">分页</a><a href="#可展开对象" class="nav-item block " data-reactid="12">可展开对象</a><a href="#元数据" class="nav-item block " data-reactid="13">元数据</a><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="14">交易</div><a href="#charges-支付" class="nav-item block " data-reactid="15">Charges 支付</a><a href="#refunds-退款" class="nav-item block " data-reactid="16">Refunds 退款</a><div data-title="API 文档简介" class="keyline-top section contain clearfix " data-reactid="43"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="44"><h2 id="api-文档简介">API 文档简介</h2>
+            <p>SlipsCloud 采用先进的设计。所有接口请求地址都是可预期的以及面向资源的。使用规范的 HTTP 响应代码来表示请求结果的正确或错误信息。使用 HTTP 内置的特性，如 HTTP Authentication 和 HTTP 请求方法让接口易于理解。所有的 API 请求都会以规范友好的格式返回（包括错误信息）。</p>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="45"><h4 id="官方-sdk">官方 SDK</h4>
+            <blockquote>
+                <p>SlipsCloud 提供多语言多平台的 <a href="https://slipscloud.com">官方客户端和服务端 </a>。</p>
+            </blockquote>
+            <h4 id="定义">定义</h4>
+            <div class='endpoint dark fill-blue round '>
+                <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+                <div class='pad0 code small endpoint-url'>https://api.slipscloud.com</div>
+            </div>
+        </div></div><div data-title="认证" class="keyline-top section contain clearfix " data-reactid="46"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="47"><h2 id="认证">认证</h2>
+            <p>在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在 SlipsCloud 系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在管理平台的「企业设置」->「开发设置」内进行<a href="#">操作</a>。</p>
+            <p>API 使用 HTTP Basic Auth 进行认证。 将 API Key 作为 basic auth 的用户名。不需要填写密码。</p>
+            <p>API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。 所有的 API 请求必须通过 HTTPS 发送，使用 HTTP 会被我们的服务器拒绝。</p>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="48"><h4 id="请求示例">请求示例</h4>
+            <pre class='hljs'>curl https://api.slipscloud.com/v1/charges \
+                -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
+            <blockquote>
+                <p>请将示例中的 <code>sk_test_ibbTe5jLGCi5rzfH4OqPW9KC</code> 替换成你自己的 API Key。</p>
+            </blockquote>
+        </div></div><div data-title="错误" class="keyline-top section contain clearfix " data-reactid="49"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="50"><h2 id="错误">错误</h2>
+            <p>SlipsCloud API 使用 HTTP 状态码 (status code) 来表明一个 API 请求的成功或失败状态。返回 <code>HTTP 2XX</code> 表明 API 请求成功。返回 <code>HTTP 4XX</code> 表明在请求 API 时提供了错误信息，例如参数缺失、参数错误、支付渠道错误等。返回 <code>HTTP 5XX</code> 表明 API 请求时，SlipsCloud 服务器发生了错误。</p>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="51"><h4 id="http-返回状态码">HTTP 返回状态码</h4>
+            <blockquote>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>状态码</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>200 - OK</td>
+                            <td>一切正常。</td>
+                        </tr>
+                        <tr>
+                            <td>400 - Bad Request</td>
+                            <td>一般由缺失参数，参数格式不正确等引起。</td>
+                        </tr>
+                        <tr>
+                            <td>401 - Unauthorized</td>
+                            <td>没有提供正确的 API Key。</td>
+                        </tr>
+                        <tr>
+                            <td>402 - Request Failed</td>
+                            <td>参数格式正确但是请求失败，一般由业务错误引起。</td>
+                        </tr>
+                        <tr>
+                            <td>403 - Forbidden</td>
+                            <td>调用接口超过 SlipsCloud 套餐的并发限制，请
+                                <a href="#">升级套餐</a>
+                                或限流。</td>
+                        </tr>
+                        <tr>
+                            <td>404 - Not Found</td>
+                            <td>请求的资源不存在。</td>
+                        </tr>
+                        <tr>
+                            <td>500, 502, 503, 504 - Server Errors</td>
+                            <td>SlipsCloud服务器出错。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </blockquote>
+        </div></div><div data-title="错误汇总" class="keyline-top section contain clearfix " data-reactid="52"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="53"><h3 id="错误汇总">错误汇总</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>返回属性</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>错误类型，可以是
+                            <code>invalid_request_error</code>
+                            、
+                            <code>api_error</code>
+                            、
+                            <code>channel_error</code>
+                            或
+                            <code>card_error</code>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>返回具体的错误描述。</td>
+                    </tr>
+
+                    <tr>
+                        <td>param
+                            <em>optional</em></td>
+                        <td>当发生参数错误时返回具体的参数名，如 id。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="54"><h4 id="错误类型-type">错误类型 (type)</h4>
+            <blockquote>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><strong>错误类型</strong></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>invalid_request_error</td>
+                            <td>请求错误，传入了不正确的地址，参数或值。</td>
+                        </tr>
+                        <tr>
+                            <td>api_error</td>
+                            <td>SlipsCloud 服务器出现的异常错误。</td>
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </blockquote>
+            <h4 id="错误码-code">错误码 (code)</h4>
+            <blockquote>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>错误码</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>charge_closed</td>
+                            <td>支付订单已结束，不能进行后续操作。</td>
+                        </tr>
+                        <tr>
+                            <td>charge_unexpected_status</td>
+                            <td>支付返回意外的状态码。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </blockquote>
+        </div></div><div data-title="分页" class="keyline-top section contain clearfix " data-reactid="55"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="56"><h2 id="分页">分页</h2>
+            <p>所有的 SlipsCloud 资源都可以被 API 方法支持，例如分页 <code>charges</code> 和 <code>refunds</code>。这些 list API 方法拥有相同的数据结构。 是基于 <code>cursor</code> 的分页机制，使用参数 <code>starting_after</code> 来决定列表从何处开始，使用参数 <code>ending_before</code> 来决定列表从何处结束。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>请求参数</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>limit
+                            <em>optional</em></td>
+                        <td>限制每页可以返回多少对象，限制范围是从 1-20 项，默认是 10 项。</td>
+                    </tr>
+                    <tr>
+                        <td>starting_after
+                            <em>optional</em></td>
+                        <td>在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的
+                            <code>id</code>
+                            是
+                            <code>obj_end</code>
+                            ，你可以使用
+                            <code>starting_after</code>
+                            =
+                            <code>obj_end</code>
+                            去获取下一页。</td>
+                    </tr>
+                    <tr>
+                        <td>ending_before
+                            <em>optional</em></td>
+                        <td>在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的最后一项的
+                            <code>id</code>
+                            是
+                            <code>obj_start</code>
+                            ，你可以使用
+                            <code>ending_before</code>
+                            =
+                            <code>obj_start</code>
+                            去获取上一页。</td>
+                    </tr>
+                    <tr>
+                        <td>created
+                            <em>optional</em></td>
+                        <td>对象的创建时间，用 Unix 时间戳表示。具体参考下表
+                            <code>created</code>
+                            参数。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong><code>created</code> 参数</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>created
+                            [
+                            gt
+                            ]
+                            
+                            <em>optional</em>
+                            
+                            <em>int</em></td>
+                        <td>大于
+                            <code>charge</code>
+                            对象的创建时间，用 Unix 时间戳表示。</td>
+                    </tr>
+                    <tr>
+                        <td>created
+                            [
+                            gte
+                            ]
+                            
+                            <em>optional</em>
+                            
+                            <em>int</em></td>
+                        <td>大于或等于
+                            <code>charge</code>
+                            对象的创建时间，用 Unix 时间戳表示。</td>
+                    </tr>
+          </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>返回</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>object
+                            <em>string</em></td>
+                        <td>值为 "list"</td>
+                    </tr>
+                    <tr>
+                        <td>url
+                            <em>string</em></td>
+                        <td>表明获取该列表所使用的 URL。</td>
+                    </tr>
+               </tbody>
+            </table>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="57"><h4 id="请求示例-1">请求示例</h4>
+            <pre class='hljs'>curl https://api.pingxx.com/v1/charges/?<span class="hljs-built_in">limit</span>=3 \
+                -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
+            <h4 id="返回示例">返回示例</h4>
+            <pre class='hljs'>{
+                <span class="hljs-attr">"object"</span>: <span class="hljs-string">"list"</span>,
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"/v1/charges"</span>,
+                <span class="hljs-attr">"has_more"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"data"</span>: [
+                {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"ch_Hm5uTSifDOuTy9iLeLPSurrD"</span>,
+                <span class="hljs-attr">"object"</span>: <span class="hljs-string">"charge"</span>,
+                <span class="hljs-attr">"created"</span>: <span class="hljs-number">1410767648</span>,
+                <span class="hljs-attr">"livemode"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"paid"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"refunded"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"app"</span>: <span class="hljs-string">"app_1Gqj58ynP0mHeX1q"</span>,
+                <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"upacp"</span>,
+                <span class="hljs-attr">"order_no"</span>: <span class="hljs-string">"123456789012"</span>,
+                <span class="hljs-attr">"client_ip"</span>: <span class="hljs-string">"127.0.0.1"</span>,
+                <span class="hljs-attr">"amount"</span>: <span class="hljs-number">900</span>,
+                <span class="hljs-attr">"amount_settle"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"cny"</span>,
+                <span class="hljs-attr">"subject"</span>: <span class="hljs-string">"Your Subject"</span>,
+                <span class="hljs-attr">"body"</span>: <span class="hljs-string">"Your Body"</span>,
+                <span class="hljs-attr">"time_expire"</span>: <span class="hljs-number">1410771248</span>,
+                <span class="hljs-attr">"time_settle"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"transaction_no"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"refunds"</span>: {
+                <span class="hljs-attr">"object"</span>: <span class="hljs-string">"list"</span>,
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"/v1/charges/ch_Hm5uTSifDOuTy9iLeLPSurrD/refunds"</span>,
+                <span class="hljs-attr">"has_more"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"data"</span>: [ ]
+                },
+                <span class="hljs-attr">"amount_refunded"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"failure_code"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"failure_msg"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"metadata"</span>: {},
+                <span class="hljs-attr">"credential"</span>: {},
+                <span class="hljs-attr">"description"</span>: <span class="hljs-literal">null</span>
+                }
+                ]
+                }</pre>
+        </div></div><div data-title="可展开对象" class="keyline-top section contain clearfix " data-reactid="58"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="59"><h2 id="可展开对象">可展开对象</h2>
+            <p>Slipscloud 内有很多对象包含了其他对象的 <code>id</code>，如果这些对象带有 <strong>expandable</strong> 展开特性，你可以在请求参数后加入额外的展开参数来展开子对象。例如在创建 <code>charge</code> 对象时，使用 <code>expand[]=app</code> 参数来展开返回 <code>charge</code> 对象内部的 <code>app</code> 对象。</p>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="60"><h4 id="请求示例-2">请求示例</h4>
+            <pre class='hljs'>curl https://api.pingxx.com/v1/charges/ch_Hm5uTSifDOuTy9iLeLPSurrD?expand[]=app \
+                -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
+        </div></div><div data-title="元数据" class="keyline-top section contain clearfix " data-reactid="61"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="62"><h2 id="元数据">元数据</h2>
+            <p>一些 Slipscloud 对象支持加入用户指定的 <code>metadata</code> 参数。你可以使用键值对的形式来构建自己的 <code>metadata</code>，例如 <code>metadata[color] = red</code>，你可以在每一个 <code>charge</code> 对象中加入订单的一些详情，如颜色、型号等属性，在查询时获得更多信息。每一个对象的 <code>metadata</code> 最多可以拥有 10 个键值对，数据总长度在 1000 个 Unicode 字符以内。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>属性</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>phone_number
+                            <em>optional,string</em></td>
+                        <td>手机号(11位)。</td>
+                    </tr>
+                    <tr>
+                        <td>user_id
+                            <em>optional,string</em></td>
+                        <td>用户 ID，商户 App 内用户的唯一标识。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="63"><h4 id="请求示例-3">请求示例</h4>
+            <pre class='hljs'>  curl https://api.pingxx.com/v1/charges \
+                -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC: \
+                -d order_no=123456789 \
+                -d amount=100 \
+                -d app[id]=app_1Gqj58ynP0mHeX1q \
+                -d channel=upacp \
+                -d currency=cny \
+                -d client_ip=127.0.0.1 \
+                -d subject=<span class="hljs-string">"Your Subject"</span> \
+                -d body=<span class="hljs-string">"Your Body"</span> \
+                -d metadata[color]=red
+                -d metadata[phone_number]=13918651111</pre>
+            <h4 id="返回示例-1">返回示例</h4>
+            <pre class='hljs'>{
+                <span class="hljs-string">"id"</span>: <span class="hljs-string">"ch_Hm5uTSifDOuTy9iLeLPSurrD"</span>,
+                <span class="hljs-string">"object"</span>: <span class="hljs-string">"charge"</span>,
+                <span class="hljs-string">"created"</span>: 1410775686,
+                <span class="hljs-string">"livemode"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-string">"paid"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">"refunded"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">"app"</span>: <span class="hljs-string">"app_1Gqj58ynP0mHeX1q"</span>,
+                <span class="hljs-string">"channel"</span>: <span class="hljs-string">"upacp"</span>,
+                <span class="hljs-string">"order_no"</span>: <span class="hljs-string">"123456789"</span>,
+                <span class="hljs-string">"client_ip"</span>: <span class="hljs-string">"127.0.0.1"</span>,
+                <span class="hljs-string">"amount"</span>: 100,
+                <span class="hljs-string">"amount_settle"</span>: 0,
+                <span class="hljs-string">"currency"</span>: <span class="hljs-string">"cny"</span>,
+                <span class="hljs-string">"subject"</span>: <span class="hljs-string">"Your Subject"</span>,
+                <span class="hljs-string">"body"</span>: <span class="hljs-string">"Your Body"</span>,
+                <span class="hljs-string">"time_expire"</span>: 1410779286,
+                <span class="hljs-string">"time_settle"</span>: null,
+                <span class="hljs-string">"transaction_no"</span>: null,
+                <span class="hljs-string">"refunds"</span>: {
+                <span class="hljs-string">"object"</span>: <span class="hljs-string">"list"</span>,
+                <span class="hljs-string">"url"</span>: <span class="hljs-string">"/v1/charges/ch_Hm5uTSifDOuTy9iLeLPSurrD/refunds"</span>,
+                <span class="hljs-string">"has_more"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">"data"</span>: []
+                },
+                <span class="hljs-string">"amount_refunded"</span>: 0,
+                <span class="hljs-string">"failure_code"</span>: null,
+                <span class="hljs-string">"failure_msg"</span>: null,
+                <span class="hljs-string">"metadata"</span>: {
+                <span class="hljs-string">"color"</span>: <span class="hljs-string">"red"</span>,
+                <span class="hljs-string">"phone_number"</span>: <span class="hljs-string">"13918651111"</span>
+                },
+                <span class="hljs-string">"credential"</span>: {
+                <span class="hljs-string">"object"</span>: <span class="hljs-string">"credential"</span>,
+                <span class="hljs-string">"upacp"</span>: {
+                <span class="hljs-string">"tn"</span>: <span class="hljs-string">"201409151808060000000"</span>,
+                <span class="hljs-string">"mode"</span>: <span class="hljs-string">"01"</span>
+                }
+                },
+                <span class="hljs-string">"description"</span>: null
+                }</pre>
+        </div></div><div data-title="Charges 支付" class="keyline-top section contain clearfix " data-reactid="64"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="65"><h2 id="charges-支付">Charges 支付</h2>
+            <p>你可以创建一个 <code>charge</code> 对象向用户收款。 charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 <code>charge</code> 对象，也可以随时查询一个或者多个 <code>charge</code> 对象的状态。每个 <code>charge</code> 对象都拥有一个标识 <code>id</code>，该 <code>id</code> 在 Slipscloud 系统内唯一。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>属性</strong></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id
+                            <em>string</em></td>
+                        <td>由 Slipscloud 生成的支付对象 ID，
+                            <code>27</code>
+                            位字符串。</td>
+                    </tr>
+                    <tr>
+                        <td>object
+                            <em>string</em></td>
+                        <td>值为 "charge"。</td>
+                    </tr>
+                    <tr>
+                        <td>created
+                            <em>timestamp</em></td>
+                        <td>支付创建时的 Unix 时间戳。</td>
+                    </tr>
+                    <tr>
+                        <td>livemode
+                            <em>boolean</em></td>
+                        <td>是否处于
+                            <code>live</code>
+                            模式。</td>
+                    </tr>
+                    <tr>
+                        <td>paid
+                            <em>boolean</em></td>
+                        <td>是否已付款。</td>
+                    </tr>
+                    <tr>
+                        <td>refunded
+                            <em>boolean</em></td>
+                        <td>是否存在退款信息，无论退款是否成功。</td>
+                    </tr>
+                    <tr>
+                        <td>app
+                            <strong>expandable</strong>
+                            
+                            <em>string</em></td>
+                        <td>支付使用的
+                            <code>app</code>
+                            对象的
+                            <code>id</code>
+                            ，expandable 可展开，查看
+                            <a href="https://help.pingxx.com/article/198599">如何获取App ID</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>channel
+                            <em>string</em></td>
+                        <td>支付使用的第三方支付渠道，详情参考
+                            <a href="#%E6%94%AF%E4%BB%98%E6%B8%A0%E9%81%93%E5%B1%9E%E6%80%A7%E5%80%BC">支付渠道属性值</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>order_no
+                            <em>string</em></td>
+                        <td>商户订单号，适配每个渠道对此参数的要求，必须在商户系统内唯一。(
+                            <code>alipay</code>
+                            : 1-64 位，
+                            <code>wx</code>
+                            : 2-32 位，
+                            <code>bfb</code>
+                            : 1-20 位，
+                            <code>upacp</code>
+                            : 8-40 位，
+                            <code>yeepay_wap</code>
+                            :1-50 位，
+                            <code>jdpay_wap</code>
+                            :1-30 位，
+                            <code>qpay</code>
+                            :1-30 位，
+                            <code>cmb_wallet</code>
+                            :10 位纯数字字符串。注：除
+                            <code>cmb_wallet</code>
+                            外的其他渠道推荐使用 8-20 位，要求数字或字母，不允许特殊字符)。</td>
+                    </tr>
+                    <tr>
+                        <td>client_ip
+                            <em>ip address</em></td>
+                        <td>发起支付请求客户端的 IP 地址，格式为 IPv4 整型，如 127.0.0.1。</td>
+                    </tr>
+                    <tr>
+                        <td>amount
+                            <em>int</em></td>
+                        <td>订单总金额（必须大于0），单位为对应币种的最小货币单位，人民币为分。如订单总金额为 1 元，
+                            <code>amount</code>
+                            为 100，么么贷商户请查看申请的借贷金额范围。</td>
+                    </tr>
+                    <tr>
+                        <td>amount_settle
+                            <em>int</em></td>
+                        <td>清算金额，单位为对应币种的最小货币单位，人民币为分。</td>
+                    </tr>
+                    <tr>
+                        <td>currency
+                            <em>string</em></td>
+                        <td>3 位 ISO 货币代码，人民币为
+                            <code>cny</code>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>subject
+                            <em>string</em></td>
+                        <td>商品标题，该参数最长为 32 个 Unicode 字符，银联全渠道（
+                            <code>upacp</code>
+                            /
+                            <code>upacp_wap</code>
+                            ）限制在 32 个字节。</td>
+                    </tr>
+                    <tr>
+                        <td>body
+                            <em>string</em></td>
+                        <td>商品描述信息，该参数最长为 128 个 Unicode 字符，
+                            <code>yeepay_wap</code>
+                            对于该参数长度限制为 100 个 Unicode 字符。</td>
+                    </tr>
+                    <tr>
+                        <td>extra
+                            <em>object</em></td>
+                        <td>特定渠道发起交易时需要的额外参数，以及部分渠道支付成功返回的额外参数，详细参考
+                            <a href="#%E6%94%AF%E4%BB%98%E6%B8%A0%E9%81%93-extra-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">支付渠道 extra 参数说明</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>time_paid
+                            <em>timestamp</em></td>
+                        <td>订单支付完成时的 Unix 时间戳。（银联支付成功时间为接收异步通知的时间）</td>
+                    </tr>
+                    <tr>
+                        <td>time_expire
+                            <em>timestamp</em></td>
+                        <td>订单失效时的 Unix 时间戳。时间范围在订单创建后的 1 分钟到 15 天，默认为 1 天，创建时间以 Slipscloud 服务器时间为准。 微信对该参数的有效值限制为 2 小时内；银联对该参数的有效值限制为 1 小时内。</td>
+                    </tr>
+                    <tr>
+                        <td>time_settle
+                            <em>timestamp</em></td>
+                        <td>订单清算时间，用 Unix 时间戳表示。（暂不生效）</td>
+                    </tr>
+                    <tr>
+                        <td>transaction_no
+                            <em>string</em></td>
+                        <td>支付渠道返回的交易流水号。</td>
+                    </tr>
+                    <tr>
+                        <td>refunds
+                            <em>list</em></td>
+                        <td>退款详情列表，详见
+                            <a href="#refunds-%E9%80%80%E6%AC%BE">Refunds 退款</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>amount_refunded
+                            <em>int</em></td>
+                        <td>已退款总金额，单位为对应币种的最小货币单位，例如：人民币为分。</td>
+                    </tr>
+                    <tr>
+                        <td>failure_code
+                            <em>string</em></td>
+                        <td>订单的错误码，详见
+                            <a href="#%E9%94%99%E8%AF%AF">错误</a>
+                            中的错误码描述。</td>
+                    </tr>
+                    <tr>
+                        <td>failure_msg
+                            <em>string</em></td>
+                        <td>订单的错误消息的描述。</td>
+                    </tr>
+                    <tr>
+                        <td>metadata
+                            <em>hash</em></td>
+                        <td>详见
+                            <a href="#%E5%85%83%E6%95%B0%E6%8D%AE">元数据</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>credential
+                            <em>object</em></td>
+                        <td>支付凭证，用于客户端发起支付。</td>
+                    </tr>
+                    <tr>
+                        <td>description
+                            <em>string</em></td>
+                        <td>订单附加说明，最多 255 个 Unicode 字符。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="66"><h4 id="对象示例">对象示例</h4>
+            <pre class='hljs'>{
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"ch_Hm5uTSifDOuTy9iLeLPSurrD"</span>,
+                <span class="hljs-attr">"object"</span>: <span class="hljs-string">"charge"</span>,
+                <span class="hljs-attr">"created"</span>: <span class="hljs-number">1410778843</span>,
+                <span class="hljs-attr">"livemode"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"paid"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"refunded"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"app"</span>: <span class="hljs-string">"app_1Gqj58ynP0mHeX1q"</span>,
+                <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"upacp"</span>,
+                <span class="hljs-attr">"order_no"</span>: <span class="hljs-string">"123456789"</span>,
+                <span class="hljs-attr">"client_ip"</span>: <span class="hljs-string">"127.0.0.1"</span>,
+                <span class="hljs-attr">"amount"</span>: <span class="hljs-number">100</span>,
+                <span class="hljs-attr">"amount_settle"</span>: <span class="hljs-number">100</span>,
+                <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"cny"</span>,
+                <span class="hljs-attr">"subject"</span>: <span class="hljs-string">"Your Subject"</span>,
+                <span class="hljs-attr">"body"</span>: <span class="hljs-string">"Your Body"</span>,
+                <span class="hljs-attr">"extra"</span>:{},
+                <span class="hljs-attr">"time_paid"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"time_expire"</span>: <span class="hljs-number">1410782443</span>,
+                <span class="hljs-attr">"time_settle"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"transaction_no"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"refunds"</span>: {
+                <span class="hljs-attr">"object"</span>: <span class="hljs-string">"list"</span>,
+                <span class="hljs-attr">"url"</span>: <span class="hljs-string">"/v1/charges/ch_Hm5uTSifDOuTy9iLeLPSurrD/refunds"</span>,
+                <span class="hljs-attr">"has_more"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">"data"</span>: []
+                },
+                <span class="hljs-attr">"amount_refunded"</span>: <span class="hljs-number">0</span>,
+                <span class="hljs-attr">"failure_code"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"failure_msg"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"credential"</span>: {
+                <span class="hljs-attr">"object"</span>: <span class="hljs-string">"credential"</span>,
+                <span class="hljs-attr">"upacp"</span>: {
+                <span class="hljs-attr">"tn"</span>: <span class="hljs-string">"201409151900430000000"</span>,
+                <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"01"</span>
+                }
+                },
+                <span class="hljs-attr">"description"</span>: <span class="hljs-literal">null</span>
+                }</pre>
+        </div></div><div data-title="创建 Charge 对象" class="keyline-top section contain clearfix " data-reactid="67"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="68"><h3 id="创建-charge-对象">创建 Charge 对象</h3>
+            <p>发起一次支付请求时需要创建一个新的 <code>charge</code> 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，Slipscloud 会发送  通知。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>请求参数</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>order_no
+                            <strong>required</strong></td>
+                        <td>商户订单号，适配每个渠道对此参数的要求，必须在商户系统内唯一。(
+                            <code>alipay</code>
+                            : 1-64 位，
+                            <code>wx</code>
+                            : 2-32 位，
+                            <code>bfb</code>
+                            : 1-20 位，
+                            <code>upacp</code>
+                            : 8-40 位，
+                            <code>yeepay_wap</code>
+                            :1-50 位，
+                            <code>jdpay_wap</code>
+                            :1-30 位，
+                            <code>qpay</code>
+                            :1-30 位，
+                            <code>cmb_wallet</code>
+                            :10 位纯数字字符串。注：除
+                            <code>cmb_wallet</code>
+                            外的其他渠道推荐使用 8-20 位，要求数字或字母，不允许特殊字符)。</td>
+                    </tr>
+                    <tr>
+                        <td>app
+                            [
+                            id
+                            ]
+                            
+                            <strong>expandable</strong>
+                            
+                            <strong>required</strong></td>
+                        <td>支付使用的
+                            <code>app</code>
+                            对象的
+                            <code>id</code>
+                            ，
+                            <code>expandable</code>
+                            可展开，查看
+                            <a href="https://help.pingxx.com/article/198599">如何获取App ID</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>channel
+                            <strong>required</strong></td>
+                        <td>支付使用的第三方支付渠道。参考
+                            <a href="#%E6%94%AF%E4%BB%98%E6%B8%A0%E9%81%93%E5%B1%9E%E6%80%A7%E5%80%BC">支付渠道属性值</a>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>amount
+                            <strong>required</strong></td>
+                        <td>订单总金额（必须大于0），单位为对应币种的最小货币单位，人民币为分。如订单总金额为 1 元，
+                            <code>amount</code>
+                            为 100，么么贷商户请查看申请的借贷金额范围。</td>
+                    </tr>
+                    <tr>
+                        <td>client_ip
+                            <strong>required</strong></td>
+                        <td>发起支付请求客户端的 IPv4 地址，如: 127.0.0.1。</td>
+                    </tr>
+                    <tr>
+                        <td>currency
+                            <strong>required</strong></td>
+                        <td>三位 ISO 货币代码，目前仅支持人民币
+                            <code>cny</code>
+                            。</td>
+                    </tr>
+                    <tr>
+                        <td>subject
+                            <strong>required</strong></td>
+                        <td>商品的标题，该参数最长为 32 个 Unicode 字符，银联全渠道（
+                            <code>upacp</code>
+                            /
+                            <code>upacp_wap</code>
+                            ）限制在 32 个字节。</td>
+                    </tr>
+                    <tr>
+                        <td>body
+                            <strong>required</strong></td>
+                        <td>商品的描述信息，该参数最长为 128 个 Unicode 字符，yeepay_wap 对于该参数长度限制为 100 个 Unicode 字符。</td>
+                    </tr>
+                    <tr>
+                        <td>extra
+                            <em>optional</em></td>
+                        <td>特定渠道发起交易时需要的额外参数，以及部分渠道支付成功返回的额外参数，详细参考
+                            <a href="#%E6%94%AF%E4%BB%98%E6%B8%A0%E9%81%93-extra-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">支付渠道 extra 参数说明</a>
+                            。</td>
+                    </tr>
+
+                    <tr>
+                        <td>upacp_pc</td>
+                        <td>银联网关支付，即银联 PC 网页支付</td>
+                    </tr>
+                    <tr>
+                        <td>wx</td>
+                        <td>微信 APP 支付</td>
+                    </tr>
+                    <tr>
+                        <td>wx_pub</td>
+                        <td>微信公众号支付</td>
+                    </tr>
+                    <tr>
+                        <td>wx_pub_qr</td>
+                        <td>微信公众号扫码支付</td>
+                    </tr>
+
+                    <tr>
+                        <td>wx_lite</td>
+                        <td>微信小程序支付</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>applepay_upacp</td>
+                        <td>Apple Pay</td>
+                    </tr>
+
+                    <tr>
+                        <td>qpay</td>
+                        <td>QQ 钱包支付</td>
+                    </tr>
+                </tbody>
+</table>
+
+
+        </div></div><div data-title="易宝支付用户标识类型码" class="keyline-top section contain clearfix " data-reactid="174"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="175"><h2 id="易宝支付用户标识类型码">易宝支付用户标识类型码</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>代码</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0	
+                            <strong>IMEI</strong></td>
+                        <td>国际移动设备身份码的缩写，国际移动装备辨识码，是由 15 位数字组成的"电子串号"，它与每台手机一一对应。</td>
+                    </tr>
+                    <tr>
+                        <td>1	
+                            <strong>MAC 地址</strong></td>
+                        <td>MAC(Media Access Control)地址，或称为 MAC 位址、硬件位址，用来定义网络设备的位置。在 OSI 模型中，第三层网络层负责 IP 地址，第二层数据链路层则负责 MAC 位址。因此一个主机会有一个 IP 地址，而每个网络位置会有一个专属于它的 MAC 位址。</td>
+                    </tr>
+                    <tr>
+                        <td>2	
+                            <strong>用户 ID</strong></td>
+                        <td>用户编号。</td>
+                    </tr>
+                    <tr>
+                        <td>3	
+                            <strong>用户 Email	</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4	
+                            <strong>用户手机号</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5	
+                            <strong>用户身份证号</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6	
+                            <strong>用户纸质订单协议号</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+   
+        </div></div><div data-title="认证接口 result_code 说明" class="keyline-top section contain clearfix " data-reactid="184"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="185"><h2 id="认证接口-result_code-说明">认证接口 result_code 说明</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>返回码</th>
+                        <th>返回信息</th>
+                    </tr>
+                </thead>
+                
+      
+            </table>
+
+     <hr>
+            
+        </div></div><div data-title="API 更新日志" class="keyline-top section contain clearfix " data-reactid="188"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="189"><h2 id="api-更新日志">API 更新日志</h2>
+            <hr>
+           </div></div></div></div></div><div class="fixed-top space-left20" data-reactid="250"><div class="events fill-blue dark bottom-shadow pad1 col6 pin-topright  " data-reactid="251"><div class="space-right1 small quiet inline" data-reactid="252"></div><div class="rounded-toggle inline short" data-reactid="253"><a class="strong active" data-reactid="254">cURL</a><a class="strong " data-reactid="255">PHP</a><a class="strong " data-reactid="256">Java</a><a class="strong " data-reactid="257">Ruby</a><a class="strong " data-reactid="258">Node</a><a class="strong " data-reactid="259">Python</a><a class="strong " data-reactid="260">Go</a><a class="strong " data-reactid="261">C#</a></div><div class="fr pad0" data-reactid="262"><a title="Display as 1 column" style="cursor:pointer;" class="icon quiet caret-left pad0 fill-lighten0 round" data-reactid="263"></a></div></div></div><div class="fill-light fixed-top header pad0 width20" data-reactid="264"><a href="/" class="logo" data-reactid="265">API</a></div></div></div><!--STOP-->
+        <script src='../../static/api/bundle.js'></script>
+    </body>
+</html>
