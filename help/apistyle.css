@@ -22,7 +22,7 @@ address, em{
 }
 
 .prose{
-  color: #F6F7F9;/*side bar */
+  color: #070707;/*中间主屏幕字体 bar */
 }
 
 /*code, pre {
@@ -72,8 +72,8 @@ address, em{
 
 .fill-light{
   /*background: #F5F5F7;*/
-  /*background: white;*/
-  background: #0E7D34;
+  /*sidebar background ;*/
+  background: #F6F7F9;
 }
 
 .prose.dark{
