@@ -4248,6 +4248,7 @@ lte
     ]
 }</pre>
 -->
+   <!--
 </div></div><div data-title="身份证银行卡信息认证接口" class="keyline-top section contain clearfix " data-reactid="142"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="143"><h2 id="身份证银行卡信息认证接口">身份证银行卡信息认证接口</h2>
 <p>独立的第三方接口，根据用户的姓名、身份证号、银行卡号、手机号，鉴别其身份真伪。此接口按照调用次数<a href="https://dashboard.pingxx.com/pricing">累加计费</a>，并且调用成功即产生费用（无论认证成功与否）。使用时请预先进行<a href="https://dashboard.pingxx.com/finance/account">账户充值</a>。<strong>注意：此接口强制要求<a href="https://help.pingxx.com/article/1016785">签名</a>（Pingplusplus-Signature），需在管理平台上<a href="https://help.pingxx.com/article/123161">配置商户公钥</a>，但无须开启。此接口不支持 Test 模式下调用，仅可在 Live 模式下调用。</strong></p>
 <table>
@@ -4866,6 +4867,7 @@ https://api.pingxx.com/v1/customs/{CUSTOMS_ID}</pre>
     "transaction_no": null,
     "extra":{}
 }</pre>
+-->
 <!--
 </div></div><div data-title="Events 事件" class="keyline-top section contain clearfix " data-reactid="157"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="158"><h2 id="events-事件">Events 事件</h2>
 <p>为了便于客户系统或者第三方系统处理客户的交易信息，Slipscloud 系统支持 Webhooks 功能，可以按照客户要求把特定的事件结果推送到指定的地址以便于客户做后续处理。目前支持的事件包括周期性交易汇总信息、支付结果、红包结果、企业转账结果和退款结果。
