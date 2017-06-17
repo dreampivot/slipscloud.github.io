@@ -13,7 +13,6 @@
   <body>
     <!--START--><div id='app'><div class="container unlimiter" data-reactroot="" data-reactid="1" data-react-checksum="418540799"><div class="fixed-top fixed-right space-left20" data-reactid="2"><div class="fill-dark col6 pin-right" data-reactid="3"></div></div><div class="space-top5 scroll-styled overflow-auto pad1 width20 sidebar fixed-left fill-light light" data-reactid="4"><div class="pad0x small" data-reactid="5"><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="6">简介</div><a href="#api-文档简介" class="nav-item block " data-reactid="7">API 文档简介</a><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="8">基础</div><a href="#认证" class="nav-item block " data-reactid="9">认证</a><a href="#错误" class="nav-item block " data-reactid="10">错误</a><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="14">费用</div><a href="#charges-支付" class="nav-item block " data-reactid="15">Charges 支付</a><div class="small pad0x quiet space-top1 nav-section-name" data-reactid="38">API更新</div><a href="#api-更新日志" class="nav-item block " data-reactid="39">API 更新日志</a></div></div><div class="space-left20" data-reactid="40"><div class="" data-reactid="41"><div class="clearfix" data-reactid="42"><div data-title="API 文档简介" class="keyline-top section contain clearfix " data-reactid="43"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="44"><h2 id="api-文档简介">API 文档简介</h2>
 
-   
     
     <p>SlipsCloud 采用 先进设计。所有接口请求地址都是可预期的以及面向资源的。使用规范的 HTTP 响应代码来表示请求结果的正确或错误信息。使用 HTTP 内置的特性，如 HTTP Authentication 和 HTTP 请求方法让接口易于理解。所有的 API 请求都会以规范友好的 JSON 对象格式返回（包括错误信息）。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="45"><h4 id="官方-sdk">官方 SDK</h4>
@@ -28,7 +27,7 @@
 </div></div><div data-title="认证" class="keyline-top section contain clearfix " data-reactid="46"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="47"><h2 id="认证">认证</h2>
 <p>在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在 SlipsCloud 系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在管理平台的「企业设置」->「开发设置」内进行<a href="https://help.pingxx.com/article/123152">操作</a>。</p>
 <p>SlipsCloud API 使用 ---- 进行认证。 。</p>
-<p>API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。 所有的 API 请求必须通过 HTTPS 发送，使用 HTTP 会被 Ping++ 服务器拒绝。</p>
+<p>API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。 所有的 API 请求必须通过 HTTPS 发送，使用 HTTP 会被 SlipsCloud 服务器拒绝。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="48"><h4 id="请求示例">请求示例</h4>
 <pre class='hljs'>curl https://api.slipscloud.com/v1/charges \
 -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
@@ -133,7 +132,7 @@
 </tr>
 <tr>
 <td>api_error</td>
-<td>Ping++ 服务器出现的异常错误。</td>
+<td>SlipsCloud 服务器出现的异常错误。</td>
 </tr>
 <tr>
 <td>channel_error</td>
@@ -281,7 +280,7 @@
 </blockquote>
 
 </div></div><div data-title="Charges 支付" class="keyline-top section contain clearfix " data-reactid="64"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="65"><h2 id="charges-支付">Charges 支付</h2>
-<p>你可以创建一个 <code>charge</code> 对象向用户收款。 charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 <code>charge</code> 对象，也可以随时查询一个或者多个 <code>charge</code> 对象的状态。每个 <code>charge</code> 对象都拥有一个标识 <code>id</code>，该 <code>id</code> 在 Ping++ 系统内唯一。</p>
+<p>你可以创建一个 <code>charge</code> 对象向用户收款。 charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 <code>charge</code> 对象，也可以随时查询一个或者多个 <code>charge</code> 对象的状态。每个 <code>charge</code> 对象都拥有一个标识 <code>id</code>，该 <code>id</code> 在 SlipsCloud 系统内唯一。</p>
 <table>
 <thead>
 <tr>
@@ -422,7 +421,7 @@
 <tr>
 <td>time_expire 
 <em>timestamp</em></td>
-<td>订单失效时的 Unix 时间戳。时间范围在订单创建后的 1 分钟到 15 天，默认为 1 天，创建时间以 Ping++ 服务器时间为准。 微信对该参数的有效值限制为 2 小时内；银联对该参数的有效值限制为 1 小时内。</td>
+<td>订单失效时的 Unix 时间戳。时间范围在订单创建后的 1 分钟到 15 天，默认为 1 天，创建时间以 SlipsCloud 服务器时间为准。 微信对该参数的有效值限制为 2 小时内；银联对该参数的有效值限制为 1 小时内。</td>
 </tr>
 <tr>
 <td>time_settle 
@@ -518,7 +517,7 @@
   <span class="hljs-attr">"description"</span>: <span class="hljs-literal">null</span>
 }</pre>
 </div></div><div data-title="创建 Charge 对象" class="keyline-top section contain clearfix " data-reactid="67"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="68"><h3 id="创建-charge-对象">创建 Charge 对象</h3>
-<p>发起一次支付请求时需要创建一个新的 <code>charge</code> 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，Ping++ 会发送 Webhooks 通知。</p>
+<p>发起一次支付请求时需要创建一个新的 <code>charge</code> 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，SlipsCloud 会发送 通知。</p>
 <table>
 <thead>
 <tr>
@@ -619,7 +618,7 @@ id
 <tr>
 <td>time_expire 
 <em>optional</em></td>
-<td>订单失效时间，用 Unix 时间戳表示。时间范围在订单创建后的 1 分钟到 15 天，默认为 1 天，创建时间以 Ping++ 服务器时间为准。 微信对该参数的有效值限制为 2 小时内；银联对该参数的有效值限制为 1 小时内。</td>
+<td>订单失效时间，用 Unix 时间戳表示。时间范围在订单创建后的 1 分钟到 15 天，默认为 1 天，创建时间以 SlipsCloud 服务器时间为准。 微信对该参数的有效值限制为 2 小时内；银联对该参数的有效值限制为 1 小时内。</td>
 </tr>
 <tr>
 <td>metadata 
