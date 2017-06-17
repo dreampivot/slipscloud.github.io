@@ -210,33 +210,37 @@ figure {
 
 .entry-title {
 	text-align: left;
-	font-size: 1.9em;
-	margin-bottom: 20px;
+	font-size: 1.1em;
+	margin-bottom: 10px;
 	line-height: 1.6;
-	padding: 10px 20px 0;
+	padding: 10px 10px 0;
 }
 
 .entry-meta {
 	text-align: center;
 	color: #DDDDDD;
-	font-size: 13px;
+	font-size: 12px;
 	letter-spacing: 1px;
 	margin-bottom: 30px;
 }
 
 .entry-content {
-	font-size: 18px;
+	font-size: 14px;
 	line-height: 1.9;
 	font-weight: 300;
 	color: #000;
 }
 
+.post-status,
+.post-like,
+.post-dislike,
 .post-category,
 .post-date,
 .post-author {
 	position: relative;
 	padding-right: 15px;
 }
+
 
 .post-category::after,
 .post-date::after,
