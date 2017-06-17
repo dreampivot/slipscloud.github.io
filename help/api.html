@@ -25,7 +25,7 @@
       <div class='pad0 code small endpoint-url'>https://api.slipscloud.com</div>
     </div>
 </div></div><div data-title="认证" class="keyline-top section contain clearfix " data-reactid="46"><div class="space-bottom8 col6 pad2x prose clip left-content" data-reactid="47"><h2 id="认证">认证</h2>
-<p>在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在 SlipsCloud 系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在管理平台的「企业设置」->「开发设置」内进行<a href="https://help.pingxx.com/article/123152">操作</a>。</p>
+<p>在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在 SlipsCloud 系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在管理平台的「企业设置」->「开发设置」内进行<a href="#">操作</a>。</p>
 <p>SlipsCloud API 使用 ---- 进行认证。 。</p>
 <p>API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。 所有的 API 请求必须通过 HTTPS 发送，使用 HTTP 会被 SlipsCloud 服务器拒绝。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="48"><h4 id="请求示例">请求示例</h4>
@@ -639,9 +639,9 @@ id
 <p><strong>返回</strong></p>
 <p>返回一个支付凭据 <code>charge</code> 对象。鉴于支付渠道对 <code>order_no</code> 的合法性要求，为了保证支付请求的正确处理，请务必保证对于同一支付渠道下，不同支付产品间 <code>order_no</code> 的唯一性。例如：已在微信公众号下使用的 <code>order_no</code> 则无法在微信支付以及微信公众号扫码下重复使用，该规则同样适用于其他同类渠道。如果发生错误，则会返回错误码和错误详情，详见 <a href="#%E9%94%99%E8%AF%AF">错误</a>。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="69"><h4 id="定义-1">定义</h4>
-<pre class='hljs'>POST https://api.pingxx.com/v1/charges</pre>
+<pre class='hljs'>POST https://api.slipscloud.com/v1/charges</pre>
 <h4 id="请求示例-4">请求示例</h4>
-<pre class='hljs'>curl https://api.pingxx.com/v1/charges \
+<pre class='hljs'>curl https://api.slipscloud.com/v1/charges \
 -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC: \
 -d order_no=123456789 \
 -d amount=100 \
@@ -716,9 +716,9 @@ id
 <p><strong>返回</strong></p>
 <p>返回一个已存在的 <code>charge</code> 对象或者一个错误，详见 <a href="#%E9%94%99%E8%AF%AF">错误</a>。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="72"><h4 id="定义-2">定义</h4>
-<pre class='hljs'>GET https://api.pingxx.com/v1/charges/{CHARGE_ID}</pre>
+<pre class='hljs'>GET https://api.slipscloud.com/v1/charges/{CHARGE_ID}</pre>
 <h4 id="请求示例-5">请求示例</h4>
-<pre class='hljs'>curl https://api.pingxx.com/v1/charges/ch_L8qn10mLmr1GS8e5OODmHaL4 \
+<pre class='hljs'>curl https://api.slipscloud.com/v1/charges/ch_L8qn10mLmr1GS8e5OODmHaL4 \
 -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
 <h4 id="返回示例-3">返回示例</h4>
 <pre class='hljs'>{
@@ -910,9 +910,9 @@ lte
 <p><strong>返回</strong></p>
 <p>返回一个已存在的 charge 对象列表或者一个错误，详见 <a href="#%E9%94%99%E8%AF%AF">错误</a>。</p>
 </div><div class="space-bottom4 col6 pad2 prose clip fill-dark space-top5 right-content dark" data-reactid="75"><h4 id="定义-3">定义</h4>
-<pre class='hljs'>GET https://api.pingxx.com/v1/charges?expand[]=app</pre>
+<pre class='hljs'>GET https://api.slipscloud.com/v1/charges?expand[]=app</pre>
 <h4 id="请求示例-6">请求示例</h4>
-<pre class='hljs'>curl https://api.pingxx.com/v1/charges/?<span class="hljs-built_in">limit</span>=3&amp;expand[]=app \
+<pre class='hljs'>curl https://api.slipscloud.com/v1/charges/?<span class="hljs-built_in">limit</span>=3&amp;expand[]=app \
 -u sk_test_ibbTe5jLGCi5rzfH4OqPW9KC:</pre>
 <h4 id="返回示例-4">返回示例</h4>
 <pre class='hljs'>{
