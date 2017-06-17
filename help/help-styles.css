@@ -194,6 +194,16 @@ span.required {
 	color: #0AAB4C;
 }
 
+hw {
+	color: #eee;
+	font-size: 3px;
+	letter-spacing: 0px;
+	font-weight: normal;
+	padding: 0 0 5px;
+	margin: 0;
+	font-family: 'Pontano Sans', Arial, sans-serif;
+}
+
 h1 {
 	color: #000;
 	font-size: 35px;
