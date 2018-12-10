@@ -1,10 +1,11 @@
-
+<!-- 
 ---
 layout: page
 title: 招聘
 permalink: /hiring/
 ---
-<!-- Slider Start -->
+Slider Start -->
+<!--
 <section id="global-header">
   <div class="container">
     <div class="row">
@@ -16,3 +17,176 @@ permalink: /hiring/
     </div>
   </div>
 </section>
+
+-->
+---
+layout: page
+title: 招聘信息!
+permalink: /hiring/
+---
+
+<!-- Slider Start -->
+<section id="global-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h1>招聘信息</h1>
+                    <p>jin work.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- contact form start -->
+<!-- 
+<section id="contact-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="block">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="姓名">
+                                </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="电子邮箱地址">
+                                </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="主题">
+                                </div> 
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="block">
+                    <form>
+                        <div class="form-group-2">
+                            <textarea class="form-control" rows="3" placeholder="内容"></textarea>
+                        </div>
+                        <button class="btn btn-default" type="submit">发送</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="contact-box" class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="block">
+                    <h2>办公地址</h2>
+                    <ul class="address-block">
+                        <li>
+                            <i class="fa fa-map-marker"></i>北京市海淀区西小口66号中关村东升科技园B-2一层D101A-247室
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope-o"></i>Email: sales@slipscloud.com
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>Phone:+86 13641055943
+                        </li>
+                    </ul>
+                    
+                    <ul class="social-icons">
+                        <li>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="block">
+                    <h2>办公室地址</h2>
+          
+                    <!DOCTYPE html>
+                    <html xmlns="http://www.w3.org/1999/xhtml">
+                        <head>
+                            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                            <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+                            <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+                            <title>百度地图API自定义地图</title>
+                            <!--引用百度地图API-->
+                            <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mGvjjunTPV8eIwPhEU095GwtMulvPfdo	"></script>
+                        </head>
+                        
+                        <body>
+                            <!--百度地图容器-->
+                            <div style="width:400px;height:300px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+                        </body>
+                        <script type="text/javascript">
+                            //创建和初始化地图函数：
+                            function initMap(){
+                                createMap();//创建地图
+                                setMapEvent();//设置地图事件
+                                addMapControl();//向地图添加控件
+                                addMapOverlay();//向地图添加覆盖物
+                            }
+                        function createMap(){
+                            map = new BMap.Map("map");
+                            map.centerAndZoom(new BMap.Point(116.363813,40.05105),19);
+                        }
+                        function setMapEvent(){
+                            map.enableScrollWheelZoom();
+                            map.enableKeyboard();
+                            map.enableDragging();
+                            map.enableDoubleClickZoom()
+                        }
+                        function addClickHandler(target,window){
+                            target.addEventListener("click",function(){
+                                                    target.openInfoWindow(window);
+                                                    });
+                        }
+                        function addMapOverlay(){
+                            var markers = [
+                                           {content:"北京智简云科技有限公司",title:"北京智简云科技有限公司",imageOffset: {width:0,height:3},position:{lat:40.05173,lng:116.363463}}
+                                           ];
+                                           for(var index = 0; index < markers.length; index++ ){
+                                               var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+                                               var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+                                                                                                      imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+                                                                                                      })});
+                                                                                                      var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+                                                                                                      var opts = {
+                                                                                                          width: 200,
+                                                                                                          title: markers[index].title,
+                                                                                                          enableMessage: false
+                                                                                                      };
+                                                                                                      var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+                                                                                                      marker.setLabel(label);
+                                                                                                      addClickHandler(marker,infoWindow);
+                                                                                                      map.addOverlay(marker);
+                                           };
+                        }
+                        //向地图添加控件
+                        function addMapControl(){
+                            var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+                            scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+                            map.addControl(scaleControl);
+                            var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+                            map.addControl(navControl);
+                            var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+                            map.addControl(overviewControl);
+                        }
+                        var map;
+                        initMap();
+                            </script>
+                    </html>                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+Call to action Start 
+<section id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h2>我们期待您的莅临.</h2>
+                    <p>告诉我们有什么我们可以为您做的.</p>
+                 <!--   
+                    <a class="btn btn-default btn-call-to-action" href="#" >Tell</a>-->
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
+-->
